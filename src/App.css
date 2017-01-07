@@ -34,3 +34,12 @@
   padding: 2px;
   border: 1px grey solid;
 }
+.generation-0 {
+  background-color: white
+}
+.generation-1 {
+  background-color: grey
+}
+.generation-2 {
+  background-color: dark
+}

@@ -3,24 +3,26 @@ import React, {Component} from 'react'
 class Creature extends Component {
   constructor(props) {
     super(props)
-    
-    let backgroundColor
-    if (props.generation === 0) {
-      backgroundColor = 'white'
-    } else if (props.generation === 1) {
-      backgroundColor = 'black'
-    } else {
-      backgroundColor = 'grey'
-    }
+
     this.state = {
-      style: {
-        backgroundColor : backgroundColor
-      }
+      generationClass: this.getClassNameFromGeneration(props.generation)
     } 
   }
+  getClassNameFromGeneration(generation) {
+    if (generation === 0 || generation === 1) {
+      return 'generation-' + generation
+    }
+    return 'generation-2'
+  }
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      generationClass: this.getClassNameFromGeneration(nextProps.generation)
+    })
+  }
   render() {
+    const className = 'creature ' + this.state.generationClass
     return (
-      <div className='creature' style={this.state.style}>
+      <div className={className} data-generation={this.props.generation}>
         {this.props.children}
       </div>
     )
