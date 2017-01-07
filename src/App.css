@@ -22,3 +22,15 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.board {
+  margin-left: auto;
+  margin-right: auto;
+}
+.creature {
+  float: left;
+  background-color: black;
+  color: white;
+  padding: 2px;
+  border: 1px grey solid;
+}
