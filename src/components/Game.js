@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
 import Board from './Board'
+import cloneDeep from 'lodash/cloneDeep'
 import {dieOrBorn, randomGeneration, buildBlankWorld} from '../lib/utils'
 
 class Game extends Component {
   constructor(props) {
     super(props)
 
-    const initBoardSize = 10
+    const initBoardSize = (props.initBoardSize) ? props.initBoardSize : 10
     this.state = {
       interval: (props.interval) ? props.interval : 2,
       boardSize: initBoardSize,
@@ -16,6 +17,7 @@ class Game extends Component {
     this.handleStop = this.handleStop.bind(this)
     this.handleInit = this.handleInit.bind(this)
     this.handleNext = this.handleNext.bind(this)
+    this.handleSetup = this.handleSetup.bind(this)
   }
   handleStart() {
     this.handleInit()
@@ -34,6 +36,21 @@ class Game extends Component {
     const creatures = randomGeneration(this.state.boardSize)
     this.setState({
       creatures: creatures
+    })
+  }
+  handleSetup(x, y) {
+    //user click a cell to toggle state there
+    this.setState((prevState, props) => {
+      const newCreatures = cloneDeep(prevState.creatures)
+      if (newCreatures[x][y] === 0) {
+        newCreatures[x][y] = 1
+      } else {
+        newCreatures[x][y] = 0
+      }
+      
+      return {
+        creatures: newCreatures
+      }
     })
   }
   handleNext() {
@@ -59,6 +76,7 @@ class Game extends Component {
         onStop={this.handleStop} 
         onInit={this.handleInit} 
         onNext={this.handleNext}
+        onSetup={this.handleSetup}
       />
     )
   }

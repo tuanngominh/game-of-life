@@ -18,7 +18,12 @@ class Board extends Component {
       for (let y = 0; y < boardSize; y++) {
         const key = x + '-' + y
         // console.log(x, y)
-        creatures.push(<Creature key={key} generation={this.props.creatures[x][y]} />)
+        creatures.push(<Creature 
+            key={key} 
+            generation={this.props.creatures[x][y]} 
+            onClick={()=>{this.props.onSetup(x, y)}}
+          />
+        )
       }
       creatures.push(<div key={x + '-endline'} style={{clear:'both'}} />)
     }

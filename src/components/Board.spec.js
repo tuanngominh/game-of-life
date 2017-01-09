@@ -20,7 +20,8 @@ it ('button clicks', () => {
     onStart: jest.fn(),
     onStop: jest.fn(),
     onInit: jest.fn(),
-    onNext: jest.fn()
+    onNext: jest.fn(),
+    onSetup: jest.fn()
   }
   const wrapper = mount(<Board boardSize={4} {...actions} creatures={generation1} />)
 
@@ -34,4 +35,9 @@ it ('button clicks', () => {
     wrapper.find(btnName).at(0).simulate('click')
     expect(buttonCallbackMaps[btnName]).toBeCalled()    
   }
+
+
+  //check setup  
+  wrapper.find('div.creature').at(0).simulate('click')
+  expect(actions.onSetup).toBeCalled()
 })
