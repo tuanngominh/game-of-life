@@ -1,12 +1,14 @@
 {
   "name": "game-of-life",
+  "homepage": "https://tuanngominh.github.io/game-of-life",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "gh-pages": "^0.12.0",
+    "enzyme": "^2.7.0",
     "react-scripts": "0.8.4"
   },
   "dependencies": {
-    "enzyme": "^2.7.0",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2"
@@ -15,6 +17,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
