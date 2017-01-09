@@ -8,12 +8,18 @@ Game rule explain by John Conway: https://www.youtube.com/watch?v=E8kUJL04ELA
 - Ability to detect if an element should die (done)
 - Ability to detect if an element should be born (done)
 - Ability to move to next generation (done)
-  + Manually move to next generation
-- Ability to select an element to be born
+- Manually move to next generation
+- Manually start/stop the game
+- Manually init creature: Ability to select an element to be born
+- Build webpack deploy script from scratch, replace one created by create-react-app
+- Using a state management lib like immutable then try with benchmark
+- Show test coverage on github code page
+- Use webworker to offload the calculation
 - Others:
   + Ability to pause game
   + Ability to change board size
   + Ability to change simulation speed
+- Hint : mark which creature will die and which will be born in next gen (make sense when manually move to next generation for testing)
 - Ability to have massive board : 1000 x 1000
 - Others 2:
   + Ability to render board using dom
@@ -21,3 +27,5 @@ Game rule explain by John Conway: https://www.youtube.com/watch?v=E8kUJL04ELA
   + Ability to show time spend for each generation
 - When there is no change in population, show a message and stop calculation
 - Show die, born in each generation through a real time chart
+- Others 3:
+  + Enable/disable buttons depend on usage
