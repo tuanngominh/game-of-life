@@ -15,13 +15,13 @@ Game rule explain by John Conway: https://www.youtube.com/watch?v=E8kUJL04ELA
 - Others:
   + Ability to pause game (done)
   + Ability to change board size (done)
-  + Ability to change simulation speed
-- When there is no change in population, show a message and stop calculation
+  + Ability to change simulation speed (done)
+- Ability to show previous generation as history
 - Show die, born in each generation through a real time chart
+- When there is no change in population, show a message and stop calculation
 - Others 3:
   + Enable/disable buttons depend on usage
 - Revise UI: buttons, show interval, remove react default app UI, show game logic reference
-- Ability to show previous generation
 - Build webpack deploy script from scratch, replace one created by create-react-app
 - Using a state management lib like immutable then try with benchmark
 - Show test coverage on github code page

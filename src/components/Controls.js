@@ -1,44 +1,22 @@
 import React, {Component} from 'react'
+import NumberInput from './NumberInput'
 
 class Controls extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      boardsize: props.boardsize
-    }
-    this.handleBoadsizeChange = this.handleBoadsizeChange.bind(this)
-    this.handleKeyUp = this.handleKeyUp.bind(this)
-  }
-  handleBoadsizeChange(e) {
-    if(!isNaN(e.target.value)) {
-      this.setState({
-        boardsize: parseInt(e.target.value, 10)
-      })
-    }
-  }
-  handleKeyUp(e) {
-    if (e.keyCode === 13) {
-      this.props.onBoardsizeChange(this.state.boardsize)
-    }
-  }
   render() {
     return (
       <div>
-        Board size : <input 
-          className='boardsize' 
-          value={this.state.boardsize} 
-          onChange={this.handleBoadsizeChange} 
-          onKeyUp={this.handleKeyUp}
+        <NumberInput 
+          label='Interval'
+          inputClassName='interval' 
+          value={this.props.interval} 
+          onSave={this.props.onIntervalChange}
         />
-        <button 
-          className='btn-boardsizechange' 
-          onClick={() => {
-            this.props.onBoardsizeChange(this.state.boardsize)
-          }}
-        >
-        Apply 
-        </button>
-        <br/><br/>
+        <NumberInput 
+          label='Board size' 
+          inputClassName='boardsize'
+          value={this.props.boardsize} 
+          onSave={this.props.onBoardsizeChange}
+        />
 
         <button className='btn-start' onClick={this.props.onStart}>Start</button>
         <button className='btn-pause' onClick={this.props.onPause}>Pause</button>

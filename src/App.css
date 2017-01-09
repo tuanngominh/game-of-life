@@ -23,6 +23,7 @@
   to { transform: rotate(360deg); }
 }
 
+/* Board style */
 .board {
   margin-left: auto;
   margin-right: auto;
@@ -42,4 +43,9 @@
 }
 .generation-2 {
   background-color: dark
+}
+
+/* Form style */
+.error {
+  color: red
 }

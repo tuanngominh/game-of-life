@@ -29,20 +29,24 @@ it ('button clicks', () => {
 
 })
 
-it('change board size', () => {
-  const onBoardsizeChange = jest.fn()
-  const wrapper = mount(<Controls boardsize={10} onBoardsizeChange={onBoardsizeChange} />)
-
-  //new boardsize with button click
-  let newBoardsize = 11
-  wrapper.find('input.boardsize').simulate('change', {target: {value: newBoardsize}})
-  wrapper.find('.btn-boardsizechange').simulate('click')
+it('change board size, interval', () => {
+  const onBoardsizeChange = jest.fn(), onIntervalChange = jest.fn();
+  const wrapper = mount(<Controls 
+    boardsize={10} 
+    interval={2}
+    onBoardsizeChange={onBoardsizeChange} 
+    onIntervalChange={onIntervalChange}
+  />)
+  //new boardsize
+  const newBoardsize = 11
+  wrapper.find('input.input-boardsize').simulate('change', {target: {value: newBoardsize}})
+  wrapper.find('.btn-boardsize').simulate('click')
   expect(onBoardsizeChange).toBeCalledWith(newBoardsize)
 
-  //new boardsize with enter key
-  newBoardsize = 12
-  wrapper.find('input.boardsize').simulate('change', {target: {value: newBoardsize}})
-  wrapper.find('input.boardsize').simulate('keyup', {'keyCode': 13})
-  expect(onBoardsizeChange).toBeCalledWith(newBoardsize)
+  //new interval
+  const newInterval = 3
+  wrapper.find('input.input-interval').simulate('change', {target: {value: newInterval}})
+  wrapper.find('input.input-interval').simulate('keyup', {'keyCode': 13})
+  expect(onIntervalChange).toBeCalledWith(newInterval)
 
 })

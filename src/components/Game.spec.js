@@ -41,8 +41,8 @@ it('change board size', () => {
 
   //new boardsize with button click
   let newBoardsize = 11
-  wrapper.find('input.boardsize').simulate('change', {target: {value: newBoardsize}})
-  wrapper.find('.btn-boardsizechange').simulate('click')
+  wrapper.find('input.input-boardsize').simulate('change', {target: {value: newBoardsize}})
+  wrapper.find('.btn-boardsize').simulate('click')
 
   //update inner creatures array
   expect(wrapper.state().creatures.length).toBe(newBoardsize)

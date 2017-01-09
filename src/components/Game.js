@@ -25,6 +25,7 @@ class Game extends Component {
     this.handleResume = this.handleResume.bind(this)
 
     this.handleBoardsizeChange = this.handleBoardsizeChange.bind(this)
+    this.handleIntervalChange = this.handleIntervalChange.bind(this)
   }
   _clearTimer() {
     if (this.state.timerId) {
@@ -37,6 +38,18 @@ class Game extends Component {
       boardSize: newBoardsize,
       creatures: buildBlankWorld(newBoardsize)
     })
+  }
+  handleIntervalChange(newInterval) {
+    this._clearTimer()
+
+    const timerId = setInterval(
+      () => this.handleNext(),
+      newInterval * 1000
+    )
+    this.setState({
+      interval: newInterval,
+      timerId : timerId
+    }) 
   }
   handleStart() {
     this.handleInit()
@@ -114,6 +127,9 @@ class Game extends Component {
         <Controls 
           boardsize={this.state.boardSize} 
           onBoardsizeChange={this.handleBoardsizeChange}
+
+          interval={this.state.interval} 
+          onIntervalChange={this.handleIntervalChange}
 
           onStart={this.handleStart} 
           onPause={this.handlePause} 
