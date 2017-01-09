@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Board from './Board'
+import Controls from './Controls'
 import cloneDeep from 'lodash/cloneDeep'
 import {dieOrBorn, randomGeneration, buildBlankWorld} from '../lib/utils'
 
@@ -87,18 +88,22 @@ class Game extends Component {
   }
   render() {
     return (
-      <Board
-        creatures={this.state.creatures} 
-        boardSize={this.state.boardSize} 
-        interval={this.state.interval} 
-        onStart={this.handleStart} 
-        onPause={this.handlePause} 
-        onReset={this.handleReset} 
-        onResume={this.handleResume} 
-        onInit={this.handleInit} 
-        onNext={this.handleNext}
-        onSetup={this.handleSetup}
-      />
+      <div>
+        <Board
+          creatures={this.state.creatures} 
+          boardSize={this.state.boardSize} 
+          interval={this.state.interval} 
+          onSetup={this.handleSetup}
+        />
+        <Controls 
+          onStart={this.handleStart} 
+          onPause={this.handlePause} 
+          onReset={this.handleReset} 
+          onResume={this.handleResume} 
+          onInit={this.handleInit} 
+          onNext={this.handleNext}
+        />
+      </div>
     )
   }
 }

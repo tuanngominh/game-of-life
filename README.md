@@ -13,7 +13,7 @@ Game rule explain by John Conway: https://www.youtube.com/watch?v=E8kUJL04ELA
 - Manually start/stop the game (done)
 - Ability to setup the board: Manually init creature: Ability to select an element to be born (done)
 - Others:
-  + Ability to pause game
+  + Ability to pause game (done)
   + Ability to change board size
   + Ability to change simulation speed
 - When there is no change in population, show a message and stop calculation

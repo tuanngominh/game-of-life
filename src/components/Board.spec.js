@@ -15,33 +15,12 @@ it ('generation', () => {
   expect(wrapper.find(Creature).length).toBe(16)
 })
 
-it ('button clicks', () => {
+it ('setup cell', () => {
   const actions = {
-    onStart: jest.fn(),
-    onReset: jest.fn(),
-    onPause: jest.fn(),
-    onResume: jest.fn(),
-    onInit: jest.fn(),
-    onNext: jest.fn(),
     onSetup: jest.fn()
   }
   const wrapper = mount(<Board boardSize={4} {...actions} creatures={generation1} />)
 
-  const buttonCallbackMaps = {
-    '.btn-start': actions.onStart,
-    '.btn-reset': actions.onReset,
-    '.btn-pause': actions.onPause,
-    '.btn-resume': actions.onResume,
-    '.btn-init': actions.onInit,
-    '.btn-next': actions.onNext,
-  }
-  for (let btnName in buttonCallbackMaps) {
-    wrapper.find(btnName).at(0).simulate('click')
-    expect(buttonCallbackMaps[btnName]).toBeCalled()    
-  }
-
-
-  //check setup  
   wrapper.find('div.creature').at(0).simulate('click')
   expect(actions.onSetup).toBeCalled()
 })
