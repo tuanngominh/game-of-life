@@ -16,13 +16,13 @@ it('Setup cell', () => {
   expect(wrapper.find(Creature).at(0).props().generation).toBe(0)
 })
 
-it('Start, stop without error', () => {
+it('Start, reset without error', () => {
   const interval = 0.5
   const wrapper = mount(<Game interval={interval} />)
   wrapper.find('.btn-start').at(0).simulate('click')
   setTimeout(() => {
-    wrapper.find('.btn-stop').at(0).simulate('click')
-  }, interval)
+    wrapper.find('.btn-reset').at(0).simulate('click')
+  }, interval * 1000)
 })
 
 it('Init, next without error', () => {

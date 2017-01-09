@@ -14,10 +14,13 @@ class Game extends Component {
       creatures: buildBlankWorld(initBoardSize)
     }
     this.handleStart = this.handleStart.bind(this)
-    this.handleStop = this.handleStop.bind(this)
+    this.handleReset = this.handleReset.bind(this)
     this.handleInit = this.handleInit.bind(this)
     this.handleNext = this.handleNext.bind(this)
     this.handleSetup = this.handleSetup.bind(this)
+
+    this.handlePause = this.handlePause.bind(this)
+    this.handleResume = this.handleResume.bind(this)
   }
   handleStart() {
     this.handleInit()
@@ -27,10 +30,26 @@ class Game extends Component {
       this.state.interval * 1000
     )
   }
-  handleStop() {
+  handlePause() {
     if (this.timerId) {
       clearInterval(this.timerId)  
-    }    
+    }
+  }
+  handleResume() {
+    this.timerId = setInterval(
+      () => this.handleNext(),
+      this.state.interval * 1000
+    )
+  }
+  handleReset() {
+    if (this.timerId) {
+      clearInterval(this.timerId)  
+    }
+    this.setState((prevState, props) => {
+      return {
+        creatures: buildBlankWorld(prevState.boardSize)
+      }
+    })
   }
   handleInit() {
     const creatures = randomGeneration(this.state.boardSize)
@@ -47,7 +66,7 @@ class Game extends Component {
       } else {
         newCreatures[x][y] = 0
       }
-      
+
       return {
         creatures: newCreatures
       }
@@ -73,7 +92,9 @@ class Game extends Component {
         boardSize={this.state.boardSize} 
         interval={this.state.interval} 
         onStart={this.handleStart} 
-        onStop={this.handleStop} 
+        onPause={this.handlePause} 
+        onReset={this.handleReset} 
+        onResume={this.handleResume} 
         onInit={this.handleInit} 
         onNext={this.handleNext}
         onSetup={this.handleSetup}

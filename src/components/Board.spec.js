@@ -18,7 +18,9 @@ it ('generation', () => {
 it ('button clicks', () => {
   const actions = {
     onStart: jest.fn(),
-    onStop: jest.fn(),
+    onReset: jest.fn(),
+    onPause: jest.fn(),
+    onResume: jest.fn(),
     onInit: jest.fn(),
     onNext: jest.fn(),
     onSetup: jest.fn()
@@ -27,9 +29,11 @@ it ('button clicks', () => {
 
   const buttonCallbackMaps = {
     '.btn-start': actions.onStart,
-    '.btn-stop': actions.onStop,
+    '.btn-reset': actions.onReset,
+    '.btn-pause': actions.onPause,
+    '.btn-resume': actions.onResume,
     '.btn-init': actions.onInit,
-    '.btn-next': actions.onNext
+    '.btn-next': actions.onNext,
   }
   for (let btnName in buttonCallbackMaps) {
     wrapper.find(btnName).at(0).simulate('click')

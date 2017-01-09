@@ -13,11 +13,9 @@ class Board extends Component {
   render() {
     const boardSize = this.props.boardSize;
     let creatures = []
-    // console.log(this.props.creatures)
     for (let x = 0; x < boardSize; x++) {
       for (let y = 0; y < boardSize; y++) {
         const key = x + '-' + y
-        // console.log(x, y)
         creatures.push(<Creature 
             key={key} 
             generation={this.props.creatures[x][y]} 
@@ -34,7 +32,9 @@ class Board extends Component {
           {creatures}
         </div>
         <button className='btn-start' onClick={this.props.onStart}>Start</button>
-        <button className='btn-stop' onClick={this.props.onStop}>Stop</button>
+        <button className='btn-pause' onClick={this.props.onPause}>Pause</button>
+        <button className='btn-resume' onClick={this.props.onResume}>Resume</button>
+        <button className='btn-reset' onClick={this.props.onReset}>Reset</button>
         <button className='btn-next' onClick={this.props.onNext}>Next</button>
         <button className='btn-init' onClick={this.props.onInit}>Init</button>
       </div>

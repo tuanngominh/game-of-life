@@ -11,7 +11,7 @@ Game rule explain by John Conway: https://www.youtube.com/watch?v=E8kUJL04ELA
 - Ability to move to next generation (done)
 - Manually move to next generation (done)
 - Manually start/stop the game (done)
-- Manually init creature: Ability to select an element to be born
+- Ability to setup the board: Manually init creature: Ability to select an element to be born (done)
 - Others:
   + Ability to pause game
   + Ability to change board size
