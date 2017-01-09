@@ -34,19 +34,6 @@ class Board extends Component {
       </div>
     );
   }
-  componentDidMount() {
-    //set width of board so the board is center
-    const aCreature = document.querySelector('.creature')
-      // will not available in enzyme test env
-    if (aCreature) {
-      const width = aCreature.getBoundingClientRect().width;
-      this.setState({
-        style: {
-          width: width * this.props.boardSize
-        }
-      })      
-    }
-  }
 }
 
 export default Board

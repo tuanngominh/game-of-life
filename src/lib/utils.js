@@ -101,11 +101,10 @@ export const dieOrBorn = (thisGen, boardSize) => {
 }
 
 export const buildBlankWorld = (boardSize) => {
+  boardSize = parseInt(boardSize, 10)
   let generation = []
   for (let x = 0; x < boardSize; x++) {
-    let row = new Array(boardSize)
-    row.fill(0)
-    generation[x] = row
+    generation[x] = Array(boardSize).fill(0)
   }
   return generation
 }

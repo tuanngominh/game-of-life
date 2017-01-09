@@ -10,6 +10,7 @@ class Game extends Component {
 
     const initBoardSize = (props.initBoardSize) ? props.initBoardSize : 10
     this.state = {
+      timerId: null,
       interval: (props.interval) ? props.interval : 2,
       boardSize: initBoardSize,
       creatures: buildBlankWorld(initBoardSize)
@@ -22,30 +23,46 @@ class Game extends Component {
 
     this.handlePause = this.handlePause.bind(this)
     this.handleResume = this.handleResume.bind(this)
+
+    this.handleBoardsizeChange = this.handleBoardsizeChange.bind(this)
+  }
+  _clearTimer() {
+    if (this.state.timerId) {
+      clearInterval(this.state.timerId)  
+    }
+  }
+  handleBoardsizeChange(newBoardsize) {
+    this._clearTimer()
+    this.setState({
+      boardSize: newBoardsize,
+      creatures: buildBlankWorld(newBoardsize)
+    })
   }
   handleStart() {
     this.handleInit()
 
-    this.timerId = setInterval(
+    const timerId = setInterval(
       () => this.handleNext(),
       this.state.interval * 1000
     )
+    this.setState({
+      timerId: timerId
+    })
   }
   handlePause() {
-    if (this.timerId) {
-      clearInterval(this.timerId)  
-    }
+    this._clearTimer()
   }
   handleResume() {
-    this.timerId = setInterval(
+    const timerId = setInterval(
       () => this.handleNext(),
       this.state.interval * 1000
     )
+    this.setState({
+      timerId : timerId
+    })
   }
   handleReset() {
-    if (this.timerId) {
-      clearInterval(this.timerId)  
-    }
+    this._clearTimer()
     this.setState((prevState, props) => {
       return {
         creatures: buildBlankWorld(prevState.boardSize)
@@ -82,9 +99,7 @@ class Game extends Component {
     })
   }
   componentWillUnmount() {
-    if (this.timerId) {
-      clearInterval(this.timerId)  
-    }
+    this._clearTimer()
   }
   render() {
     return (
@@ -95,7 +110,11 @@ class Game extends Component {
           interval={this.state.interval} 
           onSetup={this.handleSetup}
         />
+        <br />
         <Controls 
+          boardsize={this.state.boardSize} 
+          onBoardsizeChange={this.handleBoardsizeChange}
+
           onStart={this.handleStart} 
           onPause={this.handlePause} 
           onReset={this.handleReset} 
