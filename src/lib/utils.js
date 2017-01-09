@@ -4,7 +4,7 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export const randomFirstGeneration = (boardSize) => {
+export const randomGeneration = (boardSize) => {
   let creatureArrs = []
   for (let x = 0; x < boardSize; x++) {
     for (let y = 0; y < boardSize; y++) {
@@ -98,4 +98,14 @@ export const dieOrBorn = (thisGen, boardSize) => {
     }
   }
   return nextGen
+}
+
+export const buildBlankWorld = (boardSize) => {
+  let generation = []
+  for (let x = 0; x < boardSize; x++) {
+    let row = new Array(boardSize)
+    row.fill(0)
+    generation[x] = row
+  }
+  return generation
 }

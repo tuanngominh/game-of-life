@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {randomFirstGeneration} from './lib/utils'
-import Board from './components/Board'
+import Game from './components/Game'
 
 class App extends Component {
   render() {
-    const boardSize = 10
-    const creatures = randomFirstGeneration(boardSize)
     return (
       <div className="App">
         <div className="App-header">
@@ -17,7 +14,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Board creatures={creatures} boardSize={boardSize} interval={2} timer={true}/>
+        <Game />        
       </div>
     );
   }

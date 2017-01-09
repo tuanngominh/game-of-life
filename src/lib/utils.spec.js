@@ -1,7 +1,7 @@
 import React from 'react'
-import {dieOrBorn} from './utils'
+import {dieOrBorn, buildBlankWorld, randomGeneration} from './utils'
 
-it ('generation', () => {
+it ('Die or Born in next generation', () => {
   const generation1 = [
     [0, 1, 0, 0],
     [0, 1, 0, 1],
@@ -16,4 +16,26 @@ it ('generation', () => {
   ]
   
   expect(dieOrBorn(generation1, 4)).toEqual(generation2)
+})
+
+it ('Build a blank world', () => {
+  const boardSize = 4
+  const blank = buildBlankWorld(boardSize)
+  expect(blank.length).toBe(boardSize)
+  for (let x = 0; x < boardSize; x++) {
+    for (let y = 0; y < boardSize; y++) {
+      expect(blank[x][y]).toBe(0)
+    }
+  }
+})
+
+it ('Randomize a generation', () => {
+  const boardSize = 4
+  const random = randomGeneration(boardSize)
+  expect(random.length).toBe(boardSize)
+  for (let x = 0; x < boardSize; x++) {
+    for (let y = 0; y < boardSize; y++) {
+      expect(random[x][y]).not.toBe(undefined)
+    }
+  }
 })
