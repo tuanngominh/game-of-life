@@ -1,32 +1,90 @@
 import React, {Component} from 'react'
 import NumberInput from './NumberInput'
+import Accordion from 'react-bootstrap/lib/Accordion'
+import Panel from 'react-bootstrap/lib/Panel'
 
 class Controls extends Component {
   render() {
     return (
       <div>
-        <NumberInput 
-          label='Interval'
-          inputClassName='interval' 
-          value={this.props.interval} 
-          onSave={this.props.onIntervalChange}
-        />
-        <NumberInput 
-          label='Board size' 
-          inputClassName='boardsize'
-          value={this.props.boardsize} 
-          onSave={this.props.onBoardsizeChange}
-        />
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">Settings</h3>
+          </div>
+          <div className="panel-body">
+            <NumberInput 
+              label='Time between generations'
+              inputClassName='interval' 
+              value={this.props.interval} 
+              onSave={this.props.onIntervalChange}
+            />
+            <NumberInput 
+              label='Board size' 
+              inputClassName='boardsize'
+              value={this.props.boardsize} 
+              onSave={this.props.onBoardsizeChange}
+            />
+          </div>
+        </div>
 
-        <button className='btn-start' onClick={this.props.onStart}>Start</button>
-        <button className='btn-pause' onClick={this.props.onPause}>Pause</button>
-        <button className='btn-resume' onClick={this.props.onResume}>Resume</button>
-        <button className='btn-reset' onClick={this.props.onReset}>Reset</button>
+        <Accordion defaultActiveKey="1" >
+          <Panel header="Control (auto)" eventKey="1">
+            <div className="btn-group btn-group-justified" role="group" aria-label="auto control">
+              <div className="btn-group" role="group">
+                <button className='btn-start btn-small btn btn-default' onClick={this.props.onStart} title="Start">
+                  <i className="fa fa-play" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div className="btn-group" role="group">
+                <button className='btn-pause btn-small btn btn-default' onClick={this.props.onPause} title='Pause'>                
+                  <i className="fa fa-pause" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div className="btn-group" role="group">
+                <button className='btn-resume btn-small btn btn-default' onClick={this.props.onResume} title='Resume'>
+                  <i className="fa fa-repeat" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div className="btn-group" role="group">
+                <button className='btn-reset btn-small btn btn-default' onClick={this.props.onReset} title='Reset'>              
+                  <i className="fa fa-eraser" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
 
-        <br/><br/>
+            <br/>
+            <i className="fa fa-play" aria-hidden="true"></i> Start the game with a random population, then <u>auto</u> move to new generation<br/><br/>
+            <i className="fa fa-pause" aria-hidden="true"></i> Pause the game<br/><br/>
+            <i className="fa fa-repeat" aria-hidden="true"></i> Resume the game<br/><br/>
+            <i className="fa fa-eraser" aria-hidden="true"></i> Reset to a blank game, if you want to play again then try start
 
-        <button className='btn-init' onClick={this.props.onInit}>Init</button>
-        <button className='btn-next' onClick={this.props.onNext}>Next</button>
+          </Panel>
+          <Panel header="Control (manual)" eventKey="2">
+            <div className="btn-group btn-group-justified" role="group" aria-label="manual control">
+              <div className="btn-group" role="group">
+                <button className='btn-init btn btn-default' onClick={this.props.onInit} title='Init'>
+                  <i className="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+              </div>
+                <div className="btn-group" role="group">
+                <button className='btn-next btn btn-default' onClick={this.props.onNext} title='Next'>
+                  <i className="fa fa-step-forward" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div className="btn-group" role="group">
+                <button className='btn-reset btn btn-default' onClick={this.props.onReset} title='Reset'>
+                  <i className="fa fa-eraser" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+
+            <br/>
+            <i className="fa fa-pencil" aria-hidden="true"></i> Init population, you need to click <i className="fa fa-step-forward" aria-hidden="true"></i> to <u>manually</u> move to next generation<br/><br/>
+            <i className="fa fa-step-forward" aria-hidden="true"></i> Manually move to generation<br/><br/>
+            <i className="fa fa-eraser" aria-hidden="true"></i> Reset to a blank game, if you want to play again then try init <i className="fa fa-pencil" aria-hidden="true"></i>
+
+          </Panel>
+        </Accordion>
       </div>      
     )
   }

@@ -117,41 +117,51 @@ class Game extends Component {
       prevGen = history[0]
     }
     return (
-      <div>
-        Current Board
-        <Board
-          creatures={currentGen} 
-          boardSize={this.state.boardSize} 
-          interval={this.state.interval} 
-          onSetup={this.handleSetup}
-        />
-        { (prevGen) ? 'Previous Board' : ''}
-        { 
-          (prevGen) 
-            && 
-          <Board
-            creatures={prevGen} 
-            boardSize={this.state.boardSize} 
-            interval={this.state.interval} 
-            onSetup={this.handleSetup}
-          />
-        }
+      <div className='container'>
+        <div className='row'>
+          <div className='col-xs-12'>
+            <h1>
+              Game of Life
+            </h1>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='board-container col-xs-12 col-sm-8'>
+            Current Board
+            <Board
+              creatures={currentGen} 
+              boardSize={this.state.boardSize} 
+              interval={this.state.interval} 
+              onSetup={this.handleSetup}
+            />
+            { (prevGen) ? 'Previous Board' : ''}
+            { 
+              (prevGen) 
+                && 
+              <Board
+                creatures={prevGen} 
+                boardSize={this.state.boardSize} 
+              />
+            }
+            <br/>
+          </div>
+          <div className='control-container col-xs-12 col-sm-4'>
+            <Controls 
+              boardsize={this.state.boardSize} 
+              onBoardsizeChange={this.handleBoardsizeChange}
 
-        <br />
-        <Controls 
-          boardsize={this.state.boardSize} 
-          onBoardsizeChange={this.handleBoardsizeChange}
+              interval={this.state.interval} 
+              onIntervalChange={this.handleIntervalChange}
 
-          interval={this.state.interval} 
-          onIntervalChange={this.handleIntervalChange}
-
-          onStart={this.handleStart} 
-          onPause={this.handlePause} 
-          onReset={this.handleReset} 
-          onResume={this.handleResume} 
-          onInit={this.handleInit} 
-          onNext={this.handleNext}
-        />
+              onStart={this.handleStart} 
+              onPause={this.handlePause} 
+              onReset={this.handleReset} 
+              onResume={this.handleResume} 
+              onInit={this.handleInit} 
+              onNext={this.handleNext}
+            />        
+          </div>
+        </div>
       </div>
     )
   }

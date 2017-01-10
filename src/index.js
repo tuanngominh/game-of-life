@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import Game from './components/Game';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
+import './App.css';
 
 ReactDOM.render(
-  <App />,
+  <Game />,
   document.getElementById('root')
 );

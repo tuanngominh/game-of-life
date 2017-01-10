@@ -46,20 +46,32 @@ class NumberInput extends Component {
   render() {
     return (
       <div>
-          {this.props.label}: <input 
-            className={'input-' + this.props.inputClassName}
-            value={this.state.value} 
-            onChange={this.handleChange} 
-            onKeyUp={this.handleKeyUp}
-          />
-          <button 
-            className={'btn-' + this.props.inputClassName}
-            onClick={this.handleSaveButtonClick}
-          >
-          Apply 
-          </button>
-          <br/>
-          <span className='error' ref={(node) => {this.error = node}} />
+        <div className="row">
+          <div className="col-xs-5">
+            <label className="control-label" htmlFor={'input-' + this.props.inputClassName}>
+              {this.props.label}
+            </label>
+          </div>
+          <div className="col-xs-3">
+            <input 
+              type="text" 
+              className={'form-control input-' + this.props.inputClassName}
+              id={'input-' + this.props.inputClassName}
+              value={this.state.value} 
+              onChange={this.handleChange} 
+              onKeyUp={this.handleKeyUp}
+            />
+          </div>
+          <div className="col-xs-4">
+            <button 
+              className={'btn btn-default btn-' + this.props.inputClassName}
+              onClick={this.handleSaveButtonClick}
+            >Apply</button>
+          </div>
+        </div>
+        <div>
+          <span className='help-block error' ref={(node) => {this.error = node}} />
+        </div>        
       </div>        
     )
   }
