@@ -13,7 +13,7 @@ class Game extends Component {
       timerId: null,
       interval: (props.interval) ? props.interval : 2,
       boardSize: initBoardSize,
-      creatures: buildBlankWorld(initBoardSize)
+      history: [buildBlankWorld(initBoardSize)]
     }
     this.handleStart = this.handleStart.bind(this)
     this.handleReset = this.handleReset.bind(this)
@@ -36,7 +36,7 @@ class Game extends Component {
     this._clearTimer()
     this.setState({
       boardSize: newBoardsize,
-      creatures: buildBlankWorld(newBoardsize)
+      history: [buildBlankWorld(newBoardsize)]
     })
   }
   handleIntervalChange(newInterval) {
@@ -78,36 +78,42 @@ class Game extends Component {
     this._clearTimer()
     this.setState((prevState, props) => {
       return {
-        creatures: buildBlankWorld(prevState.boardSize)
+        history: [buildBlankWorld(prevState.boardSize)]
       }
     })
   }
   handleInit() {
     const creatures = randomGeneration(this.state.boardSize)
     this.setState({
-      creatures: creatures
+      history: [creatures]
     })
   }
   handleSetup(x, y) {
     //user click a cell to toggle state there
     this.setState((prevState, props) => {
-      const newCreatures = cloneDeep(prevState.creatures)
-      if (newCreatures[x][y] === 0) {
-        newCreatures[x][y] = 1
+      const history = prevState.history
+      const currentGen = history[history.length - 1]
+      const nextGen = cloneDeep(currentGen)
+      if (nextGen[x][y] === 0) {
+        nextGen[x][y] = 1
       } else {
-        newCreatures[x][y] = 0
+        nextGen[x][y] = 0
       }
 
       return {
-        creatures: newCreatures
+        history: [nextGen]
       }
     })
   }
   handleNext() {
     this.setState((prevState, props) => {
-      const a = dieOrBorn(prevState.creatures, prevState.boardSize)
+      const history = prevState.history
+      const currentGen = history[history.length - 1]
+      const nextGen = dieOrBorn(currentGen, prevState.boardSize)
+
+      //keep two generations
       return {
-        creatures: a
+        history: [currentGen, nextGen]
       }
     })
   }
@@ -115,14 +121,33 @@ class Game extends Component {
     this._clearTimer()
   }
   render() {
+    const history = this.state.history
+    const currentGen = history[history.length - 1]
+    let prevGen = null
+    if (history.length === 2) {
+      prevGen = history[0]
+    }
     return (
       <div>
+        Current Board
         <Board
-          creatures={this.state.creatures} 
+          creatures={currentGen} 
           boardSize={this.state.boardSize} 
           interval={this.state.interval} 
           onSetup={this.handleSetup}
         />
+        { (prevGen) ? 'Previous Board' : ''}
+        { 
+          (prevGen) 
+            && 
+          <Board
+            creatures={prevGen} 
+            boardSize={this.state.boardSize} 
+            interval={this.state.interval} 
+            onSetup={this.handleSetup}
+          />
+        }
+
         <br />
         <Controls 
           boardsize={this.state.boardSize} 

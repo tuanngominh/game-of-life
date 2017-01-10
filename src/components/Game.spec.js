@@ -52,8 +52,30 @@ it('change board size', () => {
   wrapper.find('.btn-boardsize').simulate('click')
 
   //update inner creatures array
-  expect(wrapper.state().creatures.length).toBe(newBoardsize)
-  expect(wrapper.state().creatures[0].length).toBe(newBoardsize)
+  const history = wrapper.state().history
+  const currentGen = history[0]
+  expect(history.length).toBe(1)
+  expect(currentGen.length).toBe(newBoardsize)
+  expect(currentGen[0].length).toBe(newBoardsize)
   //no timer
   expect(wrapper.state().timerId).toBeNull()
+})
+
+it('game history: start, pause', () => {
+  const interval = 0.5
+  const wrapper = mount(<Game interval={interval} />)
+  wrapper.find('.btn-start').at(0).simulate('click')
+  setTimeout(() => {
+    wrapper.find('.btn-pause').at(0).simulate('click')
+    expect(wrapper.state().history.length).toBe(2)
+  }, interval * 2 * 1000)  
+})
+
+it('game history: init, next', () => {
+  const wrapper = mount(<Game />)
+  wrapper.find('.btn-init').at(0).simulate('click')
+  expect(wrapper.state().history.length).toBe(1)
+
+  wrapper.find('.btn-next').at(0).simulate('click')
+  expect(wrapper.state().history.length).toBe(2)  
 })
