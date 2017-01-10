@@ -119,14 +119,15 @@ class Game extends Component {
     return (
       <div className='container'>
         <div className='row'>
-          <div className='col-xs-12'>
-            <h1>
-              Game of Life
-            </h1>
+          <div className='col-xs-12 text-center'>
+            <h2>
+              Game of Life (<a href="https://github.com/tuanngominh/game-of-life" target="_blank">code</a>)
+            </h2>
+            <hr/>
           </div>
         </div>
         <div className='row'>
-          <div className='board-container col-xs-12 col-sm-8'>
+          <div className='col-xs-12 col-sm-8'>
             Current Board
             <Board
               creatures={currentGen} 
@@ -145,7 +146,7 @@ class Game extends Component {
             }
             <br/>
           </div>
-          <div className='control-container col-xs-12 col-sm-4'>
+          <div className='col-xs-12 col-sm-4'>
             <Controls 
               boardsize={this.state.boardSize} 
               onBoardsizeChange={this.handleBoardsizeChange}
@@ -160,6 +161,21 @@ class Game extends Component {
               onInit={this.handleInit} 
               onNext={this.handleNext}
             />        
+          </div>
+        </div>
+        <div className="row">
+          <div className='col-xs-12'>
+            <hr/>
+            <p>
+              Implementation of famous <a href="https://www.youtube.com/watch?v=E8kUJL04ELA" target="_blank">Game Of Life</a> which is invented by John Conway. 
+              Reference from <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">wikipedia</a>
+            </p>
+            <p>
+              Check full code on <a href="https://github.com/tuanngominh/game-of-life" target="_blank">github</a>. The game is written on <a href="https://facebook.github.io/react/" target="_blank">react</a>.
+            </p>            
+          </div>
+          <div className='col-sm-6 col-sm-offset-3'>
+            <img className="img-responsive" src="//i.ytimg.com/vi/E8kUJL04ELA/maxresdefault.jpg"/>
           </div>
         </div>
       </div>
