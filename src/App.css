@@ -34,3 +34,7 @@ body {
 .panel .panel-heading a[role='tab'] {
   cursor: pointer
 }
+
+.explanation {
+  color: grey
+}

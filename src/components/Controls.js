@@ -53,10 +53,13 @@ class Controls extends Component {
             </div>
 
             <br/>
-            <i className="fa fa-play" aria-hidden="true"></i> Start the game with a random population, then <u>auto</u> move to new generation<br/><br/>
-            <i className="fa fa-pause" aria-hidden="true"></i> Pause the game<br/><br/>
-            <i className="fa fa-repeat" aria-hidden="true"></i> Resume the game<br/><br/>
-            <i className="fa fa-eraser" aria-hidden="true"></i> Reset to a blank game, if you want to play again then try start
+
+            <div className="explanation">
+              <i className="fa fa-play" aria-hidden="true"></i> Start the game with a random population, then <u>auto</u> move to new generation<br/><br/>
+              <i className="fa fa-pause" aria-hidden="true"></i> Pause the game<br/><br/>
+              <i className="fa fa-repeat" aria-hidden="true"></i> Resume the game<br/><br/>
+              <i className="fa fa-eraser" aria-hidden="true"></i> Reset to a blank game, if you want to play again then try start
+            </div>
 
           </Panel>
           <Panel header="Control (manual)" eventKey="2">
@@ -79,9 +82,12 @@ class Controls extends Component {
             </div>
 
             <br/>
-            <i className="fa fa-pencil" aria-hidden="true"></i> Init population, you need to click <i className="fa fa-step-forward" aria-hidden="true"></i> to <u>manually</u> move to next generation<br/><br/>
-            <i className="fa fa-step-forward" aria-hidden="true"></i> Manually move to generation<br/><br/>
-            <i className="fa fa-eraser" aria-hidden="true"></i> Reset to a blank game, if you want to play again then try init <i className="fa fa-pencil" aria-hidden="true"></i>
+            
+            <div className="explanation">
+              <i className="fa fa-pencil" aria-hidden="true"></i> Init population, you need to click <i className="fa fa-step-forward" aria-hidden="true"></i> to <u>manually</u> move to next generation<br/><br/>
+              <i className="fa fa-step-forward" aria-hidden="true"></i> Manually move to generation<br/><br/>
+              <i className="fa fa-eraser" aria-hidden="true"></i> Reset to a blank game, if you want to play again then try init <i className="fa fa-pencil" aria-hidden="true"></i>
+            </div>
 
           </Panel>
         </Accordion>
