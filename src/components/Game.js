@@ -15,31 +15,20 @@ class Game extends Component {
       boardSize: initBoardSize,
       history: [buildBlankWorld(initBoardSize)]
     }
-    this.handleStart = this.handleStart.bind(this)
-    this.handleReset = this.handleReset.bind(this)
-    this.handleInit = this.handleInit.bind(this)
-    this.handleNext = this.handleNext.bind(this)
-    this.handleSetup = this.handleSetup.bind(this)
-
-    this.handlePause = this.handlePause.bind(this)
-    this.handleResume = this.handleResume.bind(this)
-
-    this.handleBoardsizeChange = this.handleBoardsizeChange.bind(this)
-    this.handleIntervalChange = this.handleIntervalChange.bind(this)
   }
   _clearTimer() {
     if (this.state.timerId) {
       clearInterval(this.state.timerId)  
     }
   }
-  handleBoardsizeChange(newBoardsize) {
+  handleBoardsizeChange = (newBoardsize) => {
     this._clearTimer()
     this.setState({
       boardSize: newBoardsize,
       history: [buildBlankWorld(newBoardsize)]
     })
   }
-  handleIntervalChange(newInterval) {
+  handleIntervalChange = (newInterval) => {
     this._clearTimer()
 
     const timerId = setInterval(
@@ -51,7 +40,7 @@ class Game extends Component {
       timerId : timerId
     }) 
   }
-  handleStart() {
+  handleStart = () => {
     this.handleInit()
 
     const timerId = setInterval(
@@ -62,10 +51,10 @@ class Game extends Component {
       timerId: timerId
     })
   }
-  handlePause() {
+  handlePause = () => {
     this._clearTimer()
   }
-  handleResume() {
+  handleResume = () => {
     const timerId = setInterval(
       () => this.handleNext(),
       this.state.interval * 1000
@@ -74,7 +63,7 @@ class Game extends Component {
       timerId : timerId
     })
   }
-  handleReset() {
+  handleReset = () => {
     this._clearTimer()
     this.setState((prevState, props) => {
       return {
@@ -82,13 +71,13 @@ class Game extends Component {
       }
     })
   }
-  handleInit() {
+  handleInit = () => {
     const creatures = randomGeneration(this.state.boardSize)
     this.setState({
       history: [creatures]
     })
   }
-  handleSetup(x, y) {
+  handleSetup = (x, y) => {
     //user click a cell to toggle state there
     this.setState((prevState, props) => {
       const history = prevState.history
@@ -105,7 +94,7 @@ class Game extends Component {
       }
     })
   }
-  handleNext() {
+  handleNext = () => {
     this.setState((prevState, props) => {
       const history = prevState.history
       const currentGen = history[history.length - 1]
