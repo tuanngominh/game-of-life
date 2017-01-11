@@ -148,7 +148,7 @@ class Game extends Component {
             <div>
               <span className='generation-0 creature creature-annotation'/>{'  '}Empty, deserted, died, ...<br/>
               <div className='generation-1 creature creature-annotation'/>{' '}Generation 1<br/>
-              <div className='generation-2 creature creature-annotation'/>{' '}Generation 2<br/>
+              <div className='generation-2 creature creature-annotation'/>{' '}Generation 2, 3, 4, ...<br/>
             </div>
 
             <br/>
