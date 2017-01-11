@@ -11,19 +11,48 @@ body {
 }
 .creature {
   float: left;
-  background-color: black;
-  color: white;
-  padding: 6px;
-  border: 1px grey solid;
+  border-right: 1px white solid;
+  border-bottom: 1px white solid;
+}
+.creature-annotation {
+  width: 1em;
+  height: 1em;
+  float: none !important;
+  display: inline-block;
 }
 .generation-0 {
-  background-color: white
+  background-color: lightgrey
 }
 .generation-1 {
-  background-color: grey
+  background-color: green
 }
 .generation-2 {
-  background-color: dark
+  background-color: black
+}
+
+.cellsize-16 {
+  width: 16px;
+  height: 16px;
+  border-top: 1px white solid;
+  border-left: 1px white solid;  
+}
+.cellsize-8 {
+  width: 8px;
+  height: 8px;
+  border-top: 1px white solid;
+  border-left: 1px white solid;    
+}
+.cellsize-6 {
+  width: 6px;
+  height: 6px;
+}
+.cellsize-4 {
+  width: 4px;
+  height: 4px;
+}
+.cellsize-2 {
+  width: 2px;
+  height: 2px;
 }
 
 /* Form style */

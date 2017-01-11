@@ -14,13 +14,13 @@ class Game extends Component {
   constructor(props) {
     super(props)
 
-    const initBoardSize = (props.initBoardSize) ? props.initBoardSize : 10
+    const initBoardSize = (props.initBoardSize) ? props.initBoardSize : 40
     this.state = {
       timerId: null,
       interval: (props.interval) ? props.interval : 2,
       boardSize: initBoardSize,
       history: [buildBlankWorld(initBoardSize)],      
-      inspect: false
+      inspect: true
     }
   }
   _clearTimer() {
@@ -79,6 +79,7 @@ class Game extends Component {
     })
   }
   handleInit = () => {
+    this._clearTimer()
     const creatures = randomGeneration(this.state.boardSize)
     this.setState({
       history: [creatures]
@@ -135,14 +136,21 @@ class Game extends Component {
 
         <div className='row'>
           <div className='col-xs-12 col-sm-8'>
-            Current Board
+            Current Generation
             <Board
               creatures={currentGen} 
               boardSize={this.state.boardSize} 
               interval={this.state.interval} 
               onSetup={this.handleSetup}
             />
-            
+            <br/>
+            Cell annotation:
+            <div>
+              <span className='generation-0 creature creature-annotation'/>{'  '}Empty, deserted, died, ...<br/>
+              <div className='generation-1 creature creature-annotation'/>{' '}Generation 1<br/>
+              <div className='generation-2 creature creature-annotation'/>{' '}Generation 2<br/>
+            </div>
+
             <br/>
 
             <div className="checkbox">
@@ -152,6 +160,7 @@ class Game extends Component {
             </div>
             { 
               (this.state.inspect) && <Inspector 
+                currentGen={currentGen}
                 previousGen={prevGen} 
                 boardSize={this.state.boardSize}
               />

@@ -20,9 +20,13 @@ class Creature extends Component {
     })
   }
   render() {
-    const className = 'creature ' + this.state.generationClass
+    const className = 'creature ' + this.state.generationClass + ' cellsize-' + this.props.cellSize
     return (
-      <div className={className} data-generation={this.props.generation} onClick={this.props.onClick}>
+      <div 
+        className={className} 
+        data-generation={this.props.generation} 
+        onClick={this.props.onClick}
+      >
         {this.props.children}
       </div>
     )
