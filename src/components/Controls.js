@@ -32,7 +32,7 @@ class Controls extends Component {
           <Panel header="Control (auto)" eventKey="1">
             <div className="btn-group btn-group-justified" role="group" aria-label="auto control">
               <div className="btn-group" role="group">
-                <button className='btn-start btn-small btn btn-default' onClick={this.props.onStart} title="Start">
+                <button className='btn-start btn-small btn btn-default' style={{color: 'blue'}} onClick={this.props.onStart} title="Start">
                   <i className="fa fa-play" aria-hidden="true"></i>
                 </button>
               </div>
