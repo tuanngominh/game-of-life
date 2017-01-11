@@ -55,6 +55,36 @@ body {
   height: 2px;
 }
 
+/* @screen-xs-max : phone */
+@media screen and (max-width: 767px) {
+  .cellsize-16 {
+    width: 7px;
+    height: 7px;
+    border-top: 1px white solid;
+    border-left: 1px white solid;  
+  }
+  .cellsize-8 {
+    width: 3px;
+    height: 3px;
+    border: none;
+  }
+  .cellsize-6 {
+    width: 2px;
+    height: 2px;
+    border: none;
+  }
+  .cellsize-4 {
+    width: 1px;
+    height: 1px;
+    border: none;
+  }
+  .cellsize-2 {
+    width: 1px;
+    height: 1px;
+    border: none;
+  }
+}
+
 /* Form style */
 .error {
   color: red
