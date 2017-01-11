@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import NumberInput from './NumberInput'
+import HelpText from './Controls/HelpText'
 import Accordion from 'react-bootstrap/lib/Accordion'
 import Panel from 'react-bootstrap/lib/Panel'
 
@@ -54,12 +55,24 @@ class Controls extends Component {
 
             <br/>
 
-            <div className="explanation">
-              <i className="fa fa-play" aria-hidden="true"></i> Start the game with a random population, then <u>auto</u> move to new generation<br/><br/>
-              <i className="fa fa-pause" aria-hidden="true"></i> Pause the game<br/><br/>
-              <i className="fa fa-repeat" aria-hidden="true"></i> Resume the game<br/><br/>
-              <i className="fa fa-eraser" aria-hidden="true"></i> Reset to a blank game, if you want to play again then try start
-            </div>
+            <HelpText items={[
+              {
+                className: "fa fa-play",
+                text: "Start the game with a random population, then <u>auto</u> move to new generation"
+              },
+              {
+                className: "fa fa-pause",
+                text: "Pause the game"
+              },
+              {
+                className: "fa fa-repeat",
+                text: "Resume the game"
+              },
+              {
+                className: "fa fa-eraser",
+                text: "Reset to a blank game, if you want to play again then try start"
+              }
+            ]}/>
 
           </Panel>
           <Panel header="Control (manual)" eventKey="2">
@@ -83,11 +96,20 @@ class Controls extends Component {
 
             <br/>
             
-            <div className="explanation">
-              <i className="fa fa-pencil" aria-hidden="true"></i> Init population, you need to click <i className="fa fa-step-forward" aria-hidden="true"></i> to <u>manually</u> move to next generation<br/><br/>
-              <i className="fa fa-step-forward" aria-hidden="true"></i> Manually move to generation<br/><br/>
-              <i className="fa fa-eraser" aria-hidden="true"></i> Reset to a blank game, if you want to play again then try init <i className="fa fa-pencil" aria-hidden="true"></i>
-            </div>
+            <HelpText items={[
+              {
+                className: "fa fa-pencil",
+                text: "Init population, you need to click <i class='fa fa-step-forward' aria-hidden='true'></i> to <u>manually</u> move to next generation"
+              },
+              {
+                className: "fa fa-step-forward",
+                text: "Manually move to generation"
+              },
+              {
+                className: "fa fa-eraser",
+                text: "Reset to a blank game, if you want to play again then try init <i class='fa fa-pencil' aria-hidden='true'></i>"
+              }
+            ]}/>
 
           </Panel>
         </Accordion>
