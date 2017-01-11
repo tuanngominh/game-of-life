@@ -8,26 +8,6 @@ class Controls extends Component {
   render() {
     return (
       <div>
-        <div className="panel panel-default">
-          <div className="panel-heading">
-            <h3 className="panel-title">Settings</h3>
-          </div>
-          <div className="panel-body">
-            <NumberInput 
-              label='Time between generations'
-              inputClassName='interval' 
-              value={this.props.interval} 
-              onSave={this.props.onIntervalChange}
-            />
-            <NumberInput 
-              label='Board size' 
-              inputClassName='boardsize'
-              value={this.props.boardsize} 
-              onSave={this.props.onBoardsizeChange}
-            />
-          </div>
-        </div>
-
         <Accordion defaultActiveKey="1" >
           <Panel header="Control (auto)" eventKey="1">
             <div className="btn-group btn-group-justified" role="group" aria-label="auto control">
@@ -113,6 +93,26 @@ class Controls extends Component {
 
           </Panel>
         </Accordion>
+        
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">Settings</h3>
+          </div>
+          <div className="panel-body">
+            <NumberInput 
+              label='Time between generations'
+              inputClassName='interval' 
+              value={this.props.interval} 
+              onSave={this.props.onIntervalChange}
+            />
+            <NumberInput 
+              label='Board size' 
+              inputClassName='boardsize'
+              value={this.props.boardsize} 
+              onSave={this.props.onBoardsizeChange}
+            />
+          </div>
+        </div>        
       </div>      
     )
   }
