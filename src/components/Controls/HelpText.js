@@ -7,7 +7,8 @@ class HelpText extends Component {
       showHelp: false
     }
   }
-  toggleHelp = () => {
+  toggleHelp = (e) => {
+    e.preventDefault()
     this.setState(prevState => {
       return {
         showHelp : !prevState.showHelp
