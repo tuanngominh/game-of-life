@@ -33,7 +33,6 @@ class NumberInput extends Component {
     if (e.keyCode === 13) {
 
       if (this.validation(this.state.value)) {
-        console.log(this.state.value)
         this.props.onSave(parseInt(this.state.value, 10))   
       }
     }
