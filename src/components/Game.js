@@ -151,7 +151,7 @@ class Game extends Component {
               </label>
             </div>
             { 
-              (prevGen && this.state.inspect) && <Inspector 
+              (this.state.inspect) && <Inspector 
                 previousGen={prevGen} 
                 boardSize={this.state.boardSize}
               />
