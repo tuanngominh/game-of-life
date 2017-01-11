@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 class DieBornRate extends Component {
   constructor(props) {
@@ -57,16 +57,18 @@ class DieBornRate extends Component {
   }
   render() {
     return (
-      <LineChart width={600} height={300} data={this.state.data}
-            margin={{top: 5, right: 30, left: 20, bottom: 5}} >
-       <XAxis dataKey="gen"/>
-       <YAxis/>
-       <CartesianGrid strokeDasharray="3 3"/>
-       <Tooltip/>
-       <Legend />
-       <Line type="monotone" dataKey="die" stroke="#8884d8" activeDot={{r: 8}} isAnimationActive={false} />
-       <Line type="monotone" dataKey="born" stroke="#82ca9d" isAnimationActive={false} />
-      </LineChart>      
+      <ResponsiveContainer aspect={2.5}>
+        <LineChart  data={this.state.data}
+              margin={{top: 5, right: 30, left: 20, bottom: 5}} >
+         <XAxis dataKey="gen"/>
+         <YAxis/>
+         <CartesianGrid strokeDasharray="3 3"/>
+         <Tooltip/>
+         <Legend />
+         <Line type="monotone" dataKey="die" stroke="#8884d8" activeDot={{r: 8}} isAnimationActive={false} />
+         <Line type="monotone" dataKey="born" stroke="#82ca9d" isAnimationActive={false} />
+        </LineChart>
+      </ResponsiveContainer>
     )
   }
 }
