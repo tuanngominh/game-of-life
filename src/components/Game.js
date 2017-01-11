@@ -19,7 +19,8 @@ class Game extends Component {
       timerId: null,
       interval: (props.interval) ? props.interval : 2,
       boardSize: initBoardSize,
-      history: [buildBlankWorld(initBoardSize)]
+      history: [buildBlankWorld(initBoardSize)],      
+      inspect: false
     }
   }
   _clearTimer() {
@@ -112,6 +113,11 @@ class Game extends Component {
       }
     })
   }
+  handleInspect = () => {
+    this.setState((prevState) => ({
+      inspect: !prevState.inspect
+    }))
+  }
   componentWillUnmount() {
     this._clearTimer()
   }
@@ -139,8 +145,13 @@ class Game extends Component {
             
             <br/>
 
+            <div className="checkbox">
+              <label>
+                <input type="checkbox" className='toggle-inspector' checked={this.state.inspect} onChange={this.handleInspect} /> Show inspector
+              </label>
+            </div>
             { 
-              (prevGen) && <Inspector 
+              (prevGen && this.state.inspect) && <Inspector 
                 previousGen={prevGen} 
                 boardSize={this.state.boardSize}
               />
