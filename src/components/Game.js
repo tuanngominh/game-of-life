@@ -1,6 +1,12 @@
 import React, {Component} from 'react'
+
 import Board from './Board'
 import Controls from './Controls'
+import Inspector from './Inspector'
+
+import Header from './Page/Header'
+import Footer from './Page/Footer'
+
 import cloneDeep from 'lodash/cloneDeep'
 import {dieOrBorn, randomGeneration, buildBlankWorld} from '../lib/utils'
 
@@ -118,14 +124,9 @@ class Game extends Component {
     }
     return (
       <div className='container'>
-        <div className='row'>
-          <div className='col-xs-12 text-center'>
-            <h2>
-              Game of Life (<a href="https://github.com/tuanngominh/game-of-life" target="_blank">code</a>)
-            </h2>
-            <hr/>
-          </div>
-        </div>
+        
+        <Header />
+
         <div className='row'>
           <div className='col-xs-12 col-sm-8'>
             Current Board
@@ -135,16 +136,16 @@ class Game extends Component {
               interval={this.state.interval} 
               onSetup={this.handleSetup}
             />
-            { (prevGen) ? 'Previous Board' : ''}
+            
+            <br/>
+
             { 
-              (prevGen) 
-                && 
-              <Board
-                creatures={prevGen} 
-                boardSize={this.state.boardSize} 
+              (prevGen) && <Inspector 
+                previousGen={prevGen} 
+                boardSize={this.state.boardSize}
               />
             }
-            <br/>
+            
           </div>
           <div className='col-xs-12 col-sm-4'>
             <Controls 
@@ -163,20 +164,8 @@ class Game extends Component {
             />        
           </div>
         </div>
-        <div className="row">
-          <div className='col-xs-12'>
-            <hr/>
-            <p>
-              Implementation of famous <a href="https://www.youtube.com/watch?v=E8kUJL04ELA" target="_blank">Game Of Life</a> which is invented by John Conway.
-            </p>
-            <p>
-              Check full code on <a href="https://github.com/tuanngominh/game-of-life" target="_blank">github</a>. The game is written on <a href="https://facebook.github.io/react/" target="_blank">react</a>.
-            </p>            
-          </div>
-          <div className='col-sm-6 col-sm-offset-3'>
-            <img className="img-responsive" src="//i.ytimg.com/vi/E8kUJL04ELA/maxresdefault.jpg" alt="John Conway portrait"/>
-          </div>
-        </div>
+
+        <Footer />
       </div>
     )
   }
