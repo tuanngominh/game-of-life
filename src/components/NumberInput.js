@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 
-class NumberInput extends Component {
+class NumberInput extends PureComponent {
   constructor(props){
     super(props)
     this.state = {

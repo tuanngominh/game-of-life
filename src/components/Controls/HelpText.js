@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 
-class HelpText extends Component {
+class HelpText extends PureComponent {
   constructor() {
     super()
     this.state = {
@@ -14,6 +14,12 @@ class HelpText extends Component {
         showHelp : !prevState.showHelp
       }
     })
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    //We never changes help text content later so just return false
+    //We need this method even we use PureComponent as React shallow compare doesn't 
+    //  work with this component's Items props
+    return false
   }
   render() {
     return (

@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import NumberInput from './NumberInput'
 import HelpText from './Controls/HelpText'
 import Accordion from 'react-bootstrap/lib/Accordion'
 import Panel from 'react-bootstrap/lib/Panel'
 
-class Controls extends Component {
+class Controls extends PureComponent {
   render() {
     return (
       <div>

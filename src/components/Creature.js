@@ -1,12 +1,21 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 
-class Creature extends Component {
+class Creature extends PureComponent {
   constructor(props) {
     super(props)
 
     this.state = {
       generationClass: this.getClassNameFromGeneration(props.generation)
     } 
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      (this.props.generation === nextProps.generation)
+      && (this.props.cellSize === nextProps.cellSize)
+    ) {
+      return false
+    }
+    return true
   }
   getClassNameFromGeneration(generation) {
     if (generation === 0 || generation === 1) {
