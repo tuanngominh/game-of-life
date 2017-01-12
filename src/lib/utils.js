@@ -82,7 +82,14 @@ export const dieOrBorn = (thisGen, boardSize) => {
           nextGen[x][y] = 0
         } else {
           //get older
-          nextGen[x][y] = thisGen[x][y] + 1
+
+          //For performance issue during render Creature React Component,
+          //we don't update generation when generation > 2 as it create the same UI effect
+          if (thisGen[x][y] === 1) {
+            nextGen[x][y] = thisGen[x][y] + 1
+          } else {
+            nextGen[x][y] = thisGen[x][y]
+          }
         }        
       } 
       //no one live here, should we have new guy ?
