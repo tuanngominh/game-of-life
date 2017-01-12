@@ -1,6 +1,10 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent, PropTypes} from 'react'
 
 class HelpText extends PureComponent {
+  static propTypes = {
+    items: PropTypes.array.isRequired
+  }
+
   constructor() {
     super()
     this.state = {

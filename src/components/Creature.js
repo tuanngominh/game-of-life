@@ -1,6 +1,12 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent, PropTypes} from 'react'
 
 class Creature extends PureComponent {
+  static propTypes = {
+    generation: PropTypes.number.isRequired,
+    cellSize: PropTypes.number.isRequired,
+    onClick: PropTypes.func.isRequired
+  }
+
   constructor(props) {
     super(props)
 
@@ -35,9 +41,7 @@ class Creature extends PureComponent {
         className={className} 
         data-generation={this.props.generation} 
         onClick={this.props.onClick}
-      >
-        {this.props.children}
-      </div>
+      />
     )
   }
 }

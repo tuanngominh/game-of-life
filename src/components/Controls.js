@@ -1,10 +1,26 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent, PropTypes} from 'react'
 import NumberInput from './NumberInput'
 import HelpText from './Controls/HelpText'
 import Accordion from 'react-bootstrap/lib/Accordion'
 import Panel from 'react-bootstrap/lib/Panel'
 
 class Controls extends PureComponent {
+  static propTypes = {
+    onStart: PropTypes.func.isRequired,
+    onPause: PropTypes.func.isRequired,
+    onResume: PropTypes.func.isRequired,
+    onReset: PropTypes.func.isRequired,
+
+    onInit: PropTypes.func.isRequired,
+    onNext: PropTypes.func.isRequired,
+
+    interval: PropTypes.number,
+    onIntervalChange: PropTypes.func.isRequired,
+
+    boardsize: PropTypes.number,
+    onBoardsizeChange: PropTypes.func.isRequired
+  }
+
   render() {
     return (
       <div>

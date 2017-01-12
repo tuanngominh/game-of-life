@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import Board from './Board'
 
 import DieBornRate from './Inspector/DieBornRate'
@@ -7,6 +7,12 @@ import Tabs from 'react-bootstrap/lib/Tabs'
 import Tab from 'react-bootstrap/lib/Tab'
 
 class Inspector extends Component {
+  static propTypes = {
+    previousGen: PropTypes.string,
+    currentGen: PropTypes.array.isRequired,
+    boardSize: PropTypes.number.isRequired
+  }
+
   render() {
     return (
       <div>

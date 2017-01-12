@@ -1,8 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 class DieBornRate extends Component {
+  static propTypes = {
+    previousGen: PropTypes.array,
+    currentGen: PropTypes.array.isRequired
+  }
+
   constructor(props) {
     super(props)
     this.state = {

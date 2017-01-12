@@ -1,7 +1,13 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import Creature from './Creature'
 
 class Board extends Component {
+  static propTypes = {
+    creatures: PropTypes.array.isRequired,
+    onSetup: PropTypes.func.isRequired,
+    boardSize: PropTypes.number.isRequired
+  }
+
   constructor(props) {
     super(props)
 

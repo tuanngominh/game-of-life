@@ -1,6 +1,13 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent, PropTypes} from 'react'
 
 class NumberInput extends PureComponent {
+  static propTypes = {
+    inputClassName: PropTypes.string,
+    value: PropTypes.number,
+    label: PropTypes.string,
+    onSave: PropTypes.func.isRequired
+  }
+
   constructor(props){
     super(props)
     this.state = {
