@@ -15,12 +15,6 @@ class HelpText extends PureComponent {
       }
     })
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    //We never changes help text content later so just return false
-    //We need this method even we use PureComponent as React shallow compare doesn't 
-    //  work with this component's Items props
-    return false
-  }
   render() {
     return (
       <div className="explanation">
