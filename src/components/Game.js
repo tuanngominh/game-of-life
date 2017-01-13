@@ -135,7 +135,7 @@ class Game extends Component {
         <Header />
 
         <div className='row'>
-          <div className='col-xs-12 col-sm-8'>
+          <div className='col-xs-12 col-sm-12 col-md-8'>
             Current Generation
             <Board
               creatures={currentGen} 
@@ -167,7 +167,7 @@ class Game extends Component {
             }
             
           </div>
-          <div className='col-xs-12 col-sm-4'>
+          <div className='col-xs-12 col-sm-12 col-md-4'>
             <Controls 
               boardsize={this.state.boardSize} 
               onBoardsizeChange={this.handleBoardsizeChange}
