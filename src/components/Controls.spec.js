@@ -2,7 +2,7 @@ import React from 'react'
 import {mount} from 'enzyme'
 import Controls from './Controls'
 
-it ('button clicks', () => {
+const setup = () => {
   const actions = {
     onStart: jest.fn(),
     onReset: jest.fn(),
@@ -10,9 +10,19 @@ it ('button clicks', () => {
     onResume: jest.fn(),
     onInit: jest.fn(),
     onNext: jest.fn(),
-    onSetup: jest.fn()
+    onSetup: jest.fn(),
+    onIntervalChange: jest.fn(),
+    onBoardsizeChange: jest.fn()
   }
-  const wrapper = mount(<Controls {...actions} />)
+  const wrapper = mount(<Controls {...actions} boardsize={10} interval={2} />)
+
+  return {
+    actions : actions,
+    wrapper: wrapper
+  }
+}
+it ('button clicks', () => {
+  const {actions, wrapper} = setup()
 
   const buttonCallbackMaps = {
     '.btn-start': actions.onStart,
@@ -30,23 +40,17 @@ it ('button clicks', () => {
 })
 
 it('change board size, interval', () => {
-  const onBoardsizeChange = jest.fn(), onIntervalChange = jest.fn();
-  const wrapper = mount(<Controls 
-    boardsize={10} 
-    interval={2}
-    onBoardsizeChange={onBoardsizeChange} 
-    onIntervalChange={onIntervalChange}
-  />)
+  const {actions, wrapper} = setup()
   //new boardsize
   const newBoardsize = 11
   wrapper.find('input.input-boardsize').simulate('change', {target: {value: newBoardsize}})
   wrapper.find('.btn-boardsize').simulate('click')
-  expect(onBoardsizeChange).toBeCalledWith(newBoardsize)
+  expect(actions.onBoardsizeChange).toBeCalledWith(newBoardsize)
 
   //new interval
   const newInterval = 3
   wrapper.find('input.input-interval').simulate('change', {target: {value: newInterval}})
   wrapper.find('input.input-interval').simulate('keyup', {'keyCode': 13})
-  expect(onIntervalChange).toBeCalledWith(newInterval)
+  expect(actions.onIntervalChange).toBeCalledWith(newInterval)
 
 })

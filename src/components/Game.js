@@ -20,7 +20,7 @@ class Game extends Component {
       interval: (props.interval) ? props.interval : 2,
       boardSize: initBoardSize,
       history: [buildBlankWorld(initBoardSize)],      
-      inspect: true
+      inspect: false
     }
   }
   _clearTimer() {

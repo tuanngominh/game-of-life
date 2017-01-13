@@ -80,20 +80,3 @@ it('game history: init, next', () => {
   wrapper.find('.btn-next').at(0).simulate('click')
   expect(wrapper.state().history.length).toBe(2)  
 })
-
-it('toggle inspector', () => {
-  const wrapper = mount(<Game />)
-
-  //manually init, move to next gen so we have previous generation
-  wrapper.find('.btn-init').at(0).simulate('click')
-  wrapper.find('.btn-next').at(0).simulate('click')
-  expect(wrapper.state().history.length).toBe(2)
-
-  //turn inspector ON
-  wrapper.find('.toggle-inspector').at(0).simulate('change', {target: {checked: true}})
-  expect(wrapper.find(Inspector).length).toBe(1)
-
-  //turn inspector OFF
-  wrapper.find('.toggle-inspector').at(0).simulate('change', {target: {checked: false}})
-  expect(wrapper.find(Inspector).length).toBe(0)
-})
