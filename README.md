@@ -1,10 +1,9 @@
-Game of life on react, [play game](https://tuanngominh.github.io/game-of-life).
+Game of life on react. Play [game](https://tuanngominh.github.io/game-of-life) and check my [note](https://tuanngo.me/2017/01/13/game-of-life/) .
 
 # Game rule
 Game rule explain by John Conway: https://www.youtube.com/watch?v=E8kUJL04ELA 
 
 # Todo
-- Using a state management lib
 - Enable/disable buttons depend on usage
 - Ability to have massive board (e.g 1000 x 1000). Render board using canvas (for render huge amount of item)
 - When there is no change in population, show a message and stop calculation
