@@ -6,6 +6,17 @@ Game implementation on react with Controls and Inspector ability. Play [game](ht
 # Game rule
 Game rule explain by John Conway: https://www.youtube.com/watch?v=E8kUJL04ELA 
 
+# Note about simulate enzyme event 
+Mark check box checked ([enzyme github issue](https://github.com/airbnb/enzyme/issues/216#issuecomment-191114107))
+```js
+checkbox.simulate('change', { target: { checked: true } })
+```
+
+Enter value ([enzyme github issue](https://github.com/airbnb/enzyme/issues/76#issuecomment-189606849))
+```js
+input.simulate('change', {target: {value: newBoardsize}})
+```
+
 # Todo
 - Enable/disable buttons depend on usage
 - Ability to have a massive board (e.g 1000 x 1000). Render board using canvas (for render huge amount of item)
