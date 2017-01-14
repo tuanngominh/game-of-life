@@ -1,4 +1,5 @@
-# Game of life [![CircleCI](https://circleci.com/gh/tuanngominh/game-of-life.svg?style=svg)](https://circleci.com/gh/tuanngominh/game-of-life)
+# Game of life [![CircleCI](https://circleci.com/gh/tuanngominh/game-of-life.svg?style=svg)](https://circleci.com/gh/tuanngominh/game-of-life) [![codecov](https://codecov.io/gh/tuanngominh/game-of-life/branch/master/graph/badge.svg)](https://codecov.io/gh/tuanngominh/game-of-life)
+
 
 Game implementation on react with Controls and Inspector ability. Play [game](https://tuanngominh.github.io/game-of-life) and check [behind the scene](https://tuanngo.me/2017/01/13/game-of-life/) .
 
