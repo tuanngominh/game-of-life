@@ -4,7 +4,7 @@ import Creature from './Creature'
 class Board extends Component {
   static propTypes = {
     creatures: PropTypes.array.isRequired,
-    onSetup: PropTypes.func.isRequired,
+    onSetup: PropTypes.func,
     boardSize: PropTypes.number.isRequired
   }
 

@@ -44,7 +44,7 @@ it('Init, next without error', () => {
 })
 
 it('change board size', () => {
-  const wrapper = mount(<Game />)
+  const wrapper = mount(<Game initBoardSize={4}/>)
 
   //new boardsize with button click
   let newBoardsize = 11
