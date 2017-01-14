@@ -2,18 +2,14 @@ import React from 'react'
 import {mount} from 'enzyme'
 import Board from './Board'
 import Creature from './Creature'
+import {buildBlankWorld} from '../lib/utils.js'
 
-const setup = () => {
-  const generation1 = [
-    [0, 1, 0, 0],
-    [0, 1, 0, 1],
-    [0, 1, 1, 0],
-    [0, 0, 0, 0]
-  ]
+const setup = (boardSize = 4) => {
+  const generation1 = buildBlankWorld(boardSize)
 
   const props = {
     creatures: generation1,
-    boardSize: 4,
+    boardSize: boardSize,
     onSetup: jest.fn()
   }
 
@@ -26,8 +22,11 @@ const setup = () => {
 }
 
 it ('generation', () => {
-  const {wrapper} = setup()
-  expect(wrapper.find(Creature).length).toBe(16)
+  const boardSizes = [40, 80, 120, 180, 181]
+  boardSizes.forEach(boardSize => {
+    const {wrapper} = setup(boardSize)
+    expect(wrapper.find(Creature).length).toBe(boardSize * boardSize)    
+  })
 })
 
 it ('setup cell', () => {

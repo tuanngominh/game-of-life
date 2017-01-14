@@ -14,8 +14,15 @@ it ('Die or Born in next generation', () => {
     [0, 2, 2, 0],
     [0, 0, 0, 0]
   ]
+  const generation3 = [
+    [0, 1, 0, 0],
+    [2, 0, 0, 0],
+    [1, 2, 2, 0],
+    [0, 0, 0, 0]
+  ]
   
   expect(dieOrBorn(generation1, 4)).toEqual(generation2)
+  expect(dieOrBorn(generation2, 4)).toEqual(generation3)
 })
 
 it ('Build a blank world', () => {

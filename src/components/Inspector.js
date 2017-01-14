@@ -8,7 +8,7 @@ import Tab from 'react-bootstrap/lib/Tab'
 
 class Inspector extends Component {
   static propTypes = {
-    previousGen: PropTypes.string,
+    previousGen: PropTypes.array,
     currentGen: PropTypes.array.isRequired,
     boardSize: PropTypes.number.isRequired
   }

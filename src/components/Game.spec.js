@@ -29,9 +29,8 @@ it('Start, reset without error', () => {
   wrapper.find('.btn-start').at(0).simulate('click')
   expect(wrapper.state().timerId).toBeGreaterThan(0)
 
-  setTimeout(() => {
-    wrapper.find('.btn-reset').at(0).simulate('click')
-  }, interval * 1000)
+  wrapper.find('.btn-reset').at(0).simulate('click')
+  expect(wrapper.state().timerId).toBeNull()
 })
 
 it('Init, next without error', () => {
@@ -66,9 +65,16 @@ it('game history: start, pause', () => {
   const interval = 0.5
   const wrapper = mount(<Game interval={interval} />)
   wrapper.find('.btn-start').at(0).simulate('click')
+  expect(wrapper.state().timerId).toBeGreaterThan(0)
+
   setTimeout(() => {
     wrapper.find('.btn-pause').at(0).simulate('click')
     expect(wrapper.state().history.length).toBe(2)
+    expect(wrapper.state().timerId).toBeNull()
+
+    wrapper.find('.btn-resume').at(0).simulate('click')
+    expect(wrapper.state().timerId).toBeGreaterThan(0)
+
   }, interval * 2 * 1000)  
 })
 
@@ -79,4 +85,26 @@ it('game history: init, next', () => {
 
   wrapper.find('.btn-next').at(0).simulate('click')
   expect(wrapper.state().history.length).toBe(2)  
+})
+
+it('toggle inspect', () => {
+  const wrapper = mount(<Game />)
+
+  wrapper.find("input[type='checkbox']").at(0).simulate('change',{ target: { checked: true } })
+  expect(wrapper.find(Inspector).length).toBe(1)  
+
+  wrapper.find("input[type='checkbox']").at(0).simulate('change',{ target: { checked: false } })
+  expect(wrapper.find(Inspector).length).toBe(0)  
+
+})
+
+it('unmount', () => {
+  const wrapper = mount(<Game />)
+
+  wrapper.find('.btn-start').at(0).simulate('click')
+  expect(wrapper.state().timerId).toBeGreaterThan(0)
+
+  wrapper.unmount()
+  //can't run code bellow as wrapper is removed
+  // expect(wrapper.state().timerId).toBeNull()
 })

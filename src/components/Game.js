@@ -25,7 +25,8 @@ class Game extends Component {
   }
   _clearTimer() {
     if (this.state.timerId) {
-      clearInterval(this.state.timerId)  
+      clearInterval(this.state.timerId)
+      this.state.timerId = null
     }
   }
   handleBoardsizeChange = (newBoardsize) => {

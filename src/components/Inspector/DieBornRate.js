@@ -5,14 +5,19 @@ import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tool
 class DieBornRate extends Component {
   static propTypes = {
     previousGen: PropTypes.array,
-    currentGen: PropTypes.array.isRequired
+    currentGen: PropTypes.array.isRequired,
+    historyLength: PropTypes.number
+  }
+
+  static defauftProps = {
+    historyLength: 10
   }
 
   constructor(props) {
     super(props)
     this.state = {
       data : [{die:0, born:0}],
-      historyLength: 10,
+      historyLength: props.historyLength,
       gen: 0
     }
   }
@@ -31,6 +36,7 @@ class DieBornRate extends Component {
     return {die, born}
   }
   componentWillReceiveProps(nextProps) {
+    //init without previous generation, just add empty dot on chart
     if (!nextProps.previousGen && nextProps.currentGen) {
       this.setState({
         data: [{die: 0, born: 0, gen: 0}],
@@ -39,15 +45,18 @@ class DieBornRate extends Component {
       return;
     }
 
-    if (!nextProps.previousGen || !nextProps.currentGen) {
-      return
-    }
     const dieBorn = this.extractDieBornStatistic(nextProps.previousGen, nextProps.currentGen)
+
+    //no change found between generations
     if (dieBorn.die === 0 && dieBorn.born === 0) {
       return
     }
+
+    //there is change between generations
     this.setState((prevState) => {
       let currentData;
+
+      //if we reach max chart length then we need to truncate the history data by 1
       if (prevState.data.length === prevState.historyLength) {
         currentData = prevState.data.slice(1)
       } else {
